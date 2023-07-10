@@ -38,8 +38,23 @@ int main()
     spdlog::info("sources: {}", sources);
     hm.estimate_geodesic_distances(dist_prop);
 
+    spdlog::info("building interval tree...");
     IsoContour iso_contour(tm, dist_prop);
+    spdlog::info("built interval tree");
 
+    std::ofstream fvscalars(__FILE__ "/../vertex_scalar.txt");
+    for (auto v : tm.vertices()) {
+        fvscalars << fmt::format("{:.4f}\n", dist_prop[v]);
+    }
+
+    std::ofstream fcontours(__FILE__ "/../iso_contours.txt");
+    for (auto contour_segment : iso_contour(0.3)) {
+        for (auto loc : contour_segment) {
+            auto p = PMP::construct_point(loc, tm);
+            fcontours << fmt::format("{:.4f} {:.4f} {:4.f}\n", p[0], p[1],
+                                     p[2]);
+        }
+    }
 
     return 0;
 }
