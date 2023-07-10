@@ -1,0 +1,2 @@
+add_executable(geodesic_contour geodesic_contour.cpp)
+target_link_libraries(geodesic_contour PRIVATE iso_contour)
