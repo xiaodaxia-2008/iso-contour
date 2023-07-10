@@ -28,14 +28,8 @@ int main()
         tm.add_property_map<VertexIndex, double>("v:distance", 0.0);
 
     HeatMethod hm(tm);
-    std::vector<VertexIndex> sources;
-    std::generate_n(std::back_insert_iterator(sources), 3, [&tm] {
-        return VertexIndex(
-            CGAL::get_default_random().uniform_int<int>(0, tm.num_vertices()));
-    });
-    hm.add_sources(sources);
+    hm.add_source(VertexIndex(2457));
 
-    spdlog::info("sources: {}", sources);
     hm.estimate_geodesic_distances(dist_prop);
 
     spdlog::info("building interval tree...");

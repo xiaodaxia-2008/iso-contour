@@ -9,3 +9,4 @@ The library uses [CGAL](https://github.com/CGAL/cgal) Halfedge structure.
 
 ## Example
 The usage is simple and easy, please refer to [geodesic_example](./examples/geodesic_contour.cpp)
+![sdf](./doc/sdf.png)
