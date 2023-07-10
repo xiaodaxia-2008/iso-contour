@@ -34,12 +34,18 @@ struct IsoContour
     Mesh::Property_map<VertexIndex, double> scalar_prop;
     CGAL::Interval_skip_list<IntervalWithId> isl;
 
+    /**
+     * @note to convert FaceLocation to a 3D point, use
+     * PMP::construct_point(floc, surface_mesh)
+     *
+     */
     typedef std::vector<FaceLocation> ContourSegment;
     typedef std::vector<ContourSegment> Contour;
 
     IsoContour(const Mesh &tm,
                const Mesh::Property_map<VertexIndex, double> &scalar_prop);
     IsoContour(const Mesh &tm, const std::string &vertex_property_name);
+
     Contour operator()(double iso_val);
 };
 
