@@ -10,3 +10,16 @@ The library uses [CGAL](https://github.com/CGAL/cgal) Halfedge structure.
 ## Example
 The usage is simple and easy, please refer to [geodesic_example](./examples/geodesic_contour.cpp)
 ![sdf](./doc/sdf.png)
+
+## Building
+
+You can use `vcpkg` to install `cgal`， and then build and install with normal cmake procedure:
+
+```shell
+cd iso-contour
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+cmake --install . --prefix /path/prefix/to/install
+```
